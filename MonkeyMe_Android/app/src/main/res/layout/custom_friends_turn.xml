@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="  친구가 게임할 차례"
+        android:id="@+id/FriendsTurnTxt"
+        android:layout_alignParentTop="true"
+        android:typeface="sans"
+        android:textColor="#ffffff"
+        android:background="@drawable/theirturn"
+        android:textSize="16dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical" />
+</LinearLayout>

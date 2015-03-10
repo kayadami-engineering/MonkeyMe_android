@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <it.meenie.monkeymeandroid.CustomImageView.RectangleImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/photosample"
+        android:scaleType="centerCrop"
+        android:id="@+id/Photo"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Lock"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/lock"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="MonkeyBlue">#07B3C5</color>
+    <color name="BananaYellow">#FEFF86</color>
+    <color name="GoldYellow">#FBCF39</color>
+    <color name="BackgroundGrey">#3A4249</color>
+    <color name="DefaultGrey">#7B827E</color>
+    <color name="LightGrey">#979797</color>
+    <color name="GreyLine">#303A4249</color>
+    <color name="WarningRed">#ED174F</color>
+
+</resources>

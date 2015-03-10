@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Refactoring at 15. 3. 3 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- 상단 바(타이틀 및 버튼) -->
+    <RelativeLayout
+        android:id="@+id/TitleBar"
+        android:background="@color/MonkeyBlue"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <!-- Title -->
+        <TextView
+            android:text="힌트 더하기"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:textSize="22dp"
+            android:textColor="#ffffff"
+            android:typeface="sans"/>
+        <!-- Ok Button : go to next step -->
+        <ImageView
+            android:id="@+id/SelectBtn"
+            android:src="@drawable/ok"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp" />
+
+    </RelativeLayout>
+    <!-- 메인 뷰(사진 및 텍스트 입력) -->
+    <RelativeLayout
+        android:background="#000000"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1">
+        <!-- Photo(id/PhotoImg) -->
+        <ImageView
+            android:id="@+id/PhotoImg"
+            android:src="@drawable/photosample"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <!-- Hint(DO NOT DEL :: has background img) -->
+        <RelativeLayout
+            android:background="@drawable/hintbox"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true">
+            <!-- Hint Edit(id/HintTxt) : user input a hint for photo -->
+            <EditText
+                android:id="@+id/HintTxt"
+                android:hint="힌트를 입력하세요"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:typeface="sans" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <!-- 하단 바(안내문) -->
+    <RelativeLayout
+        android:background="@color/BackgroundGrey"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp">
+        <!-- 안내문 -->
+        <TextView
+            android:text="너무 어려울 것 같다면 힌트를 적어주세요!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#ffffff"
+            android:typeface="sans" />
+    </RelativeLayout>
+
+</LinearLayout>

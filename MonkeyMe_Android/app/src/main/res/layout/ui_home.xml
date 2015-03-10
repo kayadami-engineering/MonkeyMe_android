@@ -1,0 +1,333 @@
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rightMenuPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="#ffffffff" >
+
+        <include
+            android:id="@+id/ic_rightslidemenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/rightslidemenu" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/leftMenuPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff393c46"
+        android:gravity="left"
+        android:orientation="vertical"
+        android:textColor="#ff000000" >
+
+        <!-- include -->
+
+        <include
+            android:id="@+id/ic_leftslidemenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/leftslidemenu" />
+    </LinearLayout>
+
+    <!-- slide layout -->
+
+    <LinearLayout
+        android:id="@+id/slidingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffffff"
+        android:gravity="left"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+   //edit
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:orientation="vertical">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:id="@+id/ll_fragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        //title bar
+                        <RelativeLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="0"
+                            android:id="@+id/TitleBar"
+                            android:background="@color/MonkeyBlue">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:id="@+id/Menu"
+                                android:src="@drawable/menu"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_alignParentBottom="true" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="Monkey Me"
+                                android:id="@+id/textView"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_alignParentBottom="true"
+                                android:textSize="22dp"
+                                android:textColor="#ffffff"
+                                android:typeface="sans"
+                                android:textIsSelectable="false" />
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:id="@+id/Friends"
+                                android:src="@drawable/friendslist"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="10dp" />
+                        </RelativeLayout>
+                        //item bar
+                        <RelativeLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="0"
+                            android:id="@+id/ItemBar"
+                            android:background="#979797">
+                            //에너지
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginLeft="10dp">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:id="@+id/EnergyView"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/energy"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_gravity="center_vertical" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="energy"
+                                    android:id="@+id/EnergyTxt"
+                                    android:layout_centerVertical="true"
+                                    android:textColor="@color/BananaYellow"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="2dp"
+                                    android:typeface="sans" />
+                            </LinearLayout>
+                            //바나나
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_centerInParent="true">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:id="@+id/BananaView"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/banana"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_gravity="center_vertical" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="banana"
+                                    android:id="@+id/BananaTxt"
+                                    android:layout_centerVertical="true"
+                                    android:textColor="@color/BananaYellow"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="2dp"
+                                    android:typeface="sans" />
+                            </LinearLayout>
+                            //나뭇잎
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginRight="10dp"
+                                android:layout_alignParentEnd="false"
+                                android:layout_alignParentRight="true">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:id="@+id/LeafView"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/mleaf"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_gravity="center_vertical" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:text="leaf"
+                                    android:id="@+id/LeafTxt"
+                                    android:layout_centerVertical="true"
+                                    android:textColor="@color/BananaYellow"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="2dp"
+                                    android:typeface="sans" />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                        //profile bar
+                        <RelativeLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="90dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="0"
+                            android:id="@+id/ProfileBar"
+                            android:background="#F5F6F1">
+
+
+                            <it.meenie.monkeymeandroid.CustomImageView.BorderCircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                app:border_color="@color/MonkeyBlue"
+                                app:border_width="1dp"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:id="@+id/ProfileView"
+                                android:background="@drawable/levc"
+                                android:layout_marginRight="20dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginTop="3dp"
+                                android:src="@drawable/person"
+                                android:scaleType="centerCrop"
+                                android:layout_marginLeft="20dp"
+                                android:paddingBottom="1dp"
+                                />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ProfileBtn"
+                                android:layout_marginRight="10dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:src="@drawable/goprof"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginBottom="30dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="송혜교"
+                                android:id="@+id/EditTxt"
+                                android:layout_marginTop="25dp"
+                                android:layout_alignParentTop="true"
+                                android:typeface="sans"
+                                android:layout_toRightOf="@+id/ProfileView"
+                                android:textColor="@color/BackgroundGrey"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Level ?"
+                                android:id="@+id/LevelTxt"
+                                android:layout_alignParentBottom="false"
+                                android:typeface="sans"
+                                android:layout_toRightOf="@+id/ProfileView"
+                                android:textColor="@color/LightGrey"
+                                android:textSize="12dp"
+                                android:layout_below="@+id/EditTxt"
+                                android:layout_marginTop="3dp" />
+                        </RelativeLayout>
+                        //contents
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:id="@+id/imageView11"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:background="#30000000" />
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:id="@+id/HomeContents"
+                            >
+
+
+
+                            <ListView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/HomeList"
+                                android:fastScrollEnabled="false"
+                                android:clickable="true"
+                                android:descendantFocusability="blocksDescendants"/>
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="0"
+                            android:id="@+id/AD"
+                            android:background="@color/DefaultGrey"></RelativeLayout>
+
+                    </LinearLayout>
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@android:color/transparent"
+                android:orientation="vertical" />
+        </FrameLayout>
+    </LinearLayout>
+
+</FrameLayout>

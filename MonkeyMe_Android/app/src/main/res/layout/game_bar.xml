@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="#ffffff">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0"
+        android:id="@+id/GameBar"
+        android:dividerPadding="0dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="대전 모드"
+            android:id="@+id/MonkeyBtn"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:typeface="sans"
+            android:background="@drawable/gomonkey"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="24dp"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:textAlignment="gravity" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="퍼즐 모드"
+            android:id="@+id/RandomBtn"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:typeface="sans"
+            android:background="@drawable/puzzlemode"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="24dp"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:layout_marginBottom="5dp"
+            android:textAlignment="center" />
+    </LinearLayout>
+</LinearLayout>

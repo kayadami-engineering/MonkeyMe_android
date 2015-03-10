@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Refactoring at 15. 3. 3 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#07B3C5">
+    <!-- animation -->
+    <FrameLayout
+        android:background="#979797"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"></FrameLayout>
+    <!-- divider -->
+    <ImageView
+        android:background="#ffffff"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" />
+    <!-- Share(id/ShareBtn) -->
+    <RelativeLayout
+        android:id="@+id/ShareBtn"
+        android:background="@drawable/whitebox"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+        <!-- button text -->
+        <TextView
+            android:textColor="@color/MonkeyBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Share with friends!"
+            android:layout_centerInParent="true"
+            android:typeface="sans"
+            android:textSize="24dp" />
+    </RelativeLayout>
+    <!-- Add(id/AddBtn) -->
+    <RelativeLayout
+        android:id="@+id/AddBtn"
+        android:background="@drawable/yellowbox"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+        <!-- button text -->
+        <TextView
+            android:text="Add to Random Monkey!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#ffffff"
+            android:typeface="sans"
+            android:textSize="24dp" />
+    </RelativeLayout>
+    <!-- 하단 바 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp">
+        <!-- Ok : close the view -->
+        <ImageView
+            android:id="@+id/SelectBtn"
+            android:src="@drawable/ok"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</LinearLayout>

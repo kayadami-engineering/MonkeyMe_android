@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/BackgroundGrey"
+    android:orientation="vertical"
+    android:id="@+id/GamePage">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+    //level
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#07B3C5"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level 4"
+                android:id="@+id/LevelTxt"
+                android:textColor="#ffffff"
+                android:typeface="sans"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    //progress
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="#F5F6F1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Earn 58 exp to reach the next level!"
+                android:id="@+id/textView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/LightGrey"
+                android:typeface="sans"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:id="@+id/imageView13"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textView2"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/image_border" />
+
+            <ImageView
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView14"
+                android:layout_alignTop="@+id/imageView13"
+                android:layout_alignLeft="@+id/imageView13"
+                android:layout_alignStart="@+id/imageView13"
+                android:background="@color/BananaYellow"
+                android:layout_alignBottom="@+id/imageView13" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="33%"
+                android:id="@+id/ExpTxt"
+                android:layout_alignTop="@+id/imageView13"
+                android:layout_alignBottom="@+id/imageView13"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/GoldYellow"
+                android:typeface="sans"
+                android:gravity="center"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+        //level
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#95DEB3"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Today&apos;s Quest"
+                android:id="@+id/Quest"
+                android:textColor="#ffffff"
+                android:typeface="sans"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        //progress
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="#F5F6F1">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crack Random Monkey Easy Mode - Stage 5"
+                    android:id="@+id/QuestTxt"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/LightGrey"
+                    android:layout_marginRight="5dp"
+                    android:typeface="sans"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/banana"
+                    android:layout_toRightOf="@+id/QuestTxt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="X5"
+                    android:id="@+id/textView3"
+                    android:layout_toEndOf="@+id/QuestTxt"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_toRightOf="@+id/imageView"
+                    android:textColor="@color/GoldYellow"
+                    android:layout_centerVertical="true"
+                    android:typeface="sans"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
