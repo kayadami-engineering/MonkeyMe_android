@@ -40,12 +40,13 @@ public class MainActivity extends Activity {
     ArrayList<MyList> feeds; //feed List
     ArrayList<MenuList> menu;
     List<GroupItem> items; //친구 리스트
-    ImageView ProfileBtn, ShopBtn, MenuBtn, FriendListBtn;
+    ImageView ShopBtn, MenuBtn, FriendListBtn;
     Button MonkeyBtn, RandomBtn;
     TextView UserName;
     ExampleAdapter exListAdapter;
     AnimatedExpandableListView listView;
     SearchView searchView;
+    ViewGroup ProfileBar;
 
     /* slide menu */
     private DisplayMetrics metrics;
@@ -108,7 +109,7 @@ public class MainActivity extends Activity {
         menu.add(new MenuList(1,"Shop"));
         menu.add(new MenuList(6,"Settings"));
         menu.add(new MenuList(7,"Help"));
-        ProfileBtn = (ImageView) this.findViewById(R.id.ProfileBtn);
+        ProfileBar = (ViewGroup)findViewById(R.id.ProfileBar);
         //어댑터 생성
         MenuAdapter menuAdapter = new MenuAdapter(this, menu);
         //리스트뷰
@@ -116,8 +117,8 @@ public class MainActivity extends Activity {
 
         //어댑터 설정
         leftsidemenu.setAdapter(menuAdapter);
-        //프로필 버튼 클릭시
-        ProfileBtn.setOnClickListener(new View.OnClickListener() {
+        //본인 프로필 클릭시
+        ProfileBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), IconTabActivity.class);
