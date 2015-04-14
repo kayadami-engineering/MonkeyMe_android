@@ -1,173 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent" android:layout_height="match_parent"
-    android:orientation="vertical">
-    //상단 네비게이션
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/TitleBar"
-        android:background="@color/MonkeyBlue"
-        android:layout_alignBottom="@+id/toolbar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
 
-        <TextView
-            android:text="Guess!"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentBottom="true"
-            android:textSize="22dp"
-            android:textColor="#ffffff"
-            android:typeface="sans"
-            android:textIsSelectable="false" />
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        android:background="#000000">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3A4249">
 
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="50dp"
-            android:nestedScrollingEnabled="true">
-
-            <ImageView
-                android:layout_width="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/MonkeyBlue"
+            >
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/TakingPhoto"
+                android:layout_centerInParent="true"
+                android:text="Guess!"
+                android:textSize="22dp"
+                android:textColor="#ffffff"
+                android:typeface="sans"
+                android:textIsSelectable="false" />
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/photosample"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp" />
-
+                android:background="@drawable/moreaction"
+                android:layout_marginRight="10dp"
+                />
         </RelativeLayout>
 
-        <RelativeLayout
-            style="@android:style/ButtonBar"
-            android:layout_width="fill_parent"
-            android:layout_height="110dp"
-            android:layout_alignParentBottom="true"
-            android:background="#00ffffff"
-            android:layout_marginRight="0dp"
-            android:layout_marginLeft="0dp"
-            android:paddingEnd="0dp"
-            android:paddingStart="0dp"
-            android:paddingRight="0dp"
-            android:paddingLeft="0dp">
-
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp">
+            <LinearLayout
+                android:id="@+id/firstlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
+                <ImageView
+                    android:id="@+id/GuessProfile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/icon"/>
+                <TextView
+                    android:id="@+id/GuessName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="hyun taek"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"/>
+            </LinearLayout>
             <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_above="@+id/linearLayout"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/picmbox"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="6dp"
-                android:id="@+id/Alphabet">
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:id="@+id/GuessImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cloud"
+                    android:scaleType="centerCrop"/>
 
             </RelativeLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentStart="false"
-                android:layout_alignParentBottom="true"
-                android:background="@color/MonkeyBlue"
-                android:id="@+id/linearLayout">
-
-                <EditText
-                    android:layout_width="270dp"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/Answer"
-                    android:layout_weight="1"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:background="#ffffff"
-                    android:layout_marginLeft="10dp"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/GuessHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:textSize="15dp"
                     android:textColor="#000000"
-                    android:paddingLeft="10dp"
-                    android:typeface="sans" />
+                    android:background="@drawable/guesshint"
+                    android:typeface="sans"
+                    android:visibility="invisible"/>
+            </FrameLayout>
+        </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/OkBtn"
-                    android:src="@drawable/ok"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/HintBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/mleafbutton"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/MonkeyBlue"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/GuessKey"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
-
+                    android:layout_marginRight="5dp"
+                    android:text="외계인"
+                    android:gravity="center"
+                    android:background="@drawable/text_border"/>
+                <EditText
+                    android:id="@+id/GuessInput"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:background="#ffffff"/>
+                <ImageButton
+                    android:id="@+id/GuessOk"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/send"/>
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/LeafBtn"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/mleafbutton"
-                android:layout_above="@+id/linearLayout"
-                android:layout_marginBottom="1dp"
-                />
 
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:id="@+id/Hint"
-            android:background="@drawable/hintbox">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="힌트가 보여지는 곳"
-                android:id="@+id/HintTxt"
-                android:layout_alignParentRight="false"
-                android:layout_alignParentEnd="false"
-                android:layout_centerInParent="true"
-                android:textColor="#ffffff"
-                android:typeface="sans"
-                android:textSize="16dp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:id="@+id/Wrong"
-            android:background="@drawable/redbox"
-            android:layout_centerVertical="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="다시 맞춰보세요!"
-                android:id="@+id/WrongWarning"
-                android:layout_alignParentRight="false"
-                android:layout_alignParentEnd="false"
-                android:layout_centerInParent="true"
-                android:textColor="#ffffff"
-                android:typeface="sans"
-                android:textSize="16dp" />
-        </RelativeLayout>
-
-    </RelativeLayout>
-
-</LinearLayout>
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/redbox"
+        android:layout_centerInParent="true"
+        android:id="@+id/GuessWrong"
+        android:visibility="invisible">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="다시 맞춰보세요!"
+            android:textColor="#ffffff"
+            android:typeface="sans"
+            android:textSize="16dp"/>
+    </FrameLayout>
+</RelativeLayout>

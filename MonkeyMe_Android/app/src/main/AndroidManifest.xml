@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="it.neokree.monkeymeandroid">
+    package="com.example.basak.listtest" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--<uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>-->
     <application
         android:allowBackup="true"
-        android:icon="@drawable/banana"
+        android:icon="@drawable/monkeyicon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
-            android:name="it.meenie.monkeymeandroid.MainActivity"
+            android:name=".Test"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,20 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="it.meenie.monkeymeandroid.IconTabActivity" />
-        <activity android:name="it.meenie.monkeymeandroid.GoingMonkeyActivity" />
-        <activity android:name="it.meenie.monkeymeandroid.SelectFriendActivity" />
-        <activity android:name="it.meenie.monkeymeandroid.FacebookFriend" />
-        <activity android:name="it.meenie.monkeymeandroid.FollowingFriend" />
-        <activity android:name="it.meenie.monkeymeandroid.FollowerFriend" />
-        <activity android:name="it.meenie.monkeymeandroid.SelectPhotoActivity" />
-        <activity android:name="it.meenie.monkeymeandroid.AddHintActivity" />
-        <activity android:name="it.meenie.monkeymeandroid.EndingActivity" />
-        <activity android:name="it.meenie.monkeymeandroid.GuessActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name="it.meenie.monkeymeandroid.CorrectActivity" />
-        <activity android:name="it.meenie.monkeymeandroid.ProfileEditActivity" />
-        <activity android:name="it.meenie.monkeymeandroid.ClickPhotoActivity" />
+        <activity android:name=".SelectFriendActivity" android:label="SelectFriendActivity"/>
+        <activity android:name=".GuessActivity" android:label="GuessActivity"/>
+        <activity android:name=".GuessCorrect" android:label="GuessCorrect"/>
+        <activity android:name=".TakePhoto" android:label="TakePhoto"/>
+        <activity android:name=".SelectKeyWord" android:label="SelectKeyWord"/>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:descendantFocusability="blocksDescendants"
     >
 
-    <it.meenie.monkeymeandroid.CustomImageView.BorderCircleImageView
+    <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/Pic"
@@ -15,7 +15,7 @@
         android:layout_centerVertical="true"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/profbox"
+        android:src="@drawable/icon"
         android:scaleType="centerCrop" />
 
     <TextView

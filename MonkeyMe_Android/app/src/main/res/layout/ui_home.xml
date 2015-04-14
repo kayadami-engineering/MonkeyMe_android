@@ -12,12 +12,13 @@
         android:layout_height="match_parent"
         android:layout_gravity="right"
         android:background="#ffffffff" >
-
+        <!--
         <include
             android:id="@+id/ic_rightslidemenu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             layout="@layout/rightslidemenu" />
+        -->
     </RelativeLayout>
 
     <LinearLayout
@@ -30,12 +31,13 @@
         android:textColor="#ff000000" >
 
         <!-- include -->
-
+        <!--
         <include
             android:id="@+id/ic_leftslidemenu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             layout="@layout/leftslidemenu" />
+            -->
     </LinearLayout>
 
     <!-- slide layout -->
@@ -52,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-   //edit
+            //edit
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -73,6 +75,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="60dp"
                             android:layout_gravity="center_horizontal"
+                            android:gravity="center_vertical"
                             android:layout_weight="0"
                             android:id="@+id/TitleBar"
                             android:background="@color/MonkeyBlue">
@@ -221,7 +224,7 @@
                             android:background="#F5F6F1">
 
 
-
+                            <!--
                             <it.meenie.monkeymeandroid.CustomImageView.BorderCircleImageView
                                 xmlns:app="http://schemas.android.com/apk/res-auto"
                                 app:border_color="@color/MonkeyBlue"
@@ -238,7 +241,21 @@
                                 android:scaleType="centerCrop"
                                 android:layout_marginLeft="20dp"
                                 android:paddingBottom="1dp"
-                                />
+                                />-->
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:id="@+id/ProfileView"
+                                android:background="@drawable/levc"
+                                android:layout_marginRight="20dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginTop="3dp"
+                                android:src="@drawable/person"
+                                android:scaleType="centerCrop"
+                                android:layout_marginLeft="20dp"
+                                android:paddingBottom="1dp" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -292,7 +309,7 @@
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_weight="1"
                             android:id="@+id/HomeContents"
                             >
@@ -300,8 +317,8 @@
 
 
                             <ListView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:id="@+id/HomeList"
                                 android:fastScrollEnabled="false"
                                 android:clickable="true"

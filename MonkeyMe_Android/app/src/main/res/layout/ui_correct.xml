@@ -1,111 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/MonkeyBlue">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="몽키를 맞췄어요!"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_marginTop="60dp"
+        android:textColor="#FEFC97"/>
+    <ImageView
+        android:id="@+id/testimg"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/icon"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="획득한 바나나"
+        android:gravity="center"
+        android:textColor="#3A4249"
+        android:textSize="30dp"/>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#444444"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#FEFC97"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Congratulations!\nThat's correct!"
-        android:id="@+id/textView6"
+        android:text="lv.5"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="@color/BananaYellow"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:typeface="sans" />
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="180dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#979797"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"></FrameLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="재밌어요!"
-            android:id="@+id/TxtView"
-            android:layout_centerInParent="true"
-            android:textColor="#ffffff"
-            android:typeface="sans"
-            android:textSize="24dp" />
-    </RelativeLayout>
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#FEFC97"
+        android:layout_marginTop="10dp"/>
 
     <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:id="@+id/imageView4"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
         android:background="#ffffff"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="획득한 바나나:"
-        android:id="@+id/bananaTxt"
-        android:layout_centerInParent="true"
-        android:textColor="#ffffff"
         android:layout_gravity="center"
-        android:typeface="sans"
-        android:textSize="24dp" />
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="획득한 경험치:"
-        android:id="@+id/expTxt"
-        android:layout_centerInParent="true"
-        android:textColor="#ffffff"
-        android:layout_gravity="center"
-        android:typeface="sans"
-        android:textSize="24dp" />
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="lv. 4"
-        android:id="@+id/LevelTxt"
-        android:layout_centerInParent="true"
-        android:textColor="#ffffff"
-        android:layout_gravity="center"
-        android:typeface="sans"
-        android:textSize="24dp" />
-
-
+        android:layout_marginTop="10dp"/>
 </LinearLayout>
