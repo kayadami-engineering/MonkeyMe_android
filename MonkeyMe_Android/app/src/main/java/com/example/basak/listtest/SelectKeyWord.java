@@ -26,7 +26,7 @@ public class SelectKeyWord extends Activity {
         InfoTable = (HashMap<String, String>)getIntent().getSerializableExtra("InfoList");
         Log.i("g_no", InfoTable.get("g_no"));
         Log.i("m_no", InfoTable.get("m_no"));
-        Log.i("b_count", InfoTable.get("b_count"));
+        //Log.i("b_count", InfoTable.get("b_count"));
         BackThread thread = new BackThread(3, mHandler);
         thread.setDaemon(true);
         thread.start();

@@ -12,6 +12,8 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +30,7 @@ public class TakePhoto extends Activity {
     Intent intent;
     Bitmap BitmapImg;
     HashMap<String, String> InfoTable;
+    //ImageButton OkHintBtn;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_take_photo);
@@ -35,6 +38,7 @@ public class TakePhoto extends Activity {
         Retake = (TextView) findViewById(R.id.Retake);
         UsePhoto = (TextView) findViewById(R.id.UsePhoto);
         NewPhoto = (ImageView) findViewById(R.id.NewPhoto);
+
         mPath = Environment.getExternalStorageDirectory().getAbsolutePath() +
                 "/attachimage.jpg";
         Retake.setOnClickListener(new View.OnClickListener() {
@@ -50,9 +54,32 @@ public class TakePhoto extends Activity {
                 setContentView(R.layout.ui_add_hint);
                 NewPhoto = (ImageView) findViewById(R.id.NewPhoto);
                 NewPhoto.setImageBitmap(BitmapImg);
+                ImageButton OkHintBtn = (ImageButton)findViewById(R.id.OkHintBtn);
+                OkHintBtn.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        EditText edit = (EditText)findViewById(R.id.GuessHint);
+                        InfoTable.remove("hint");
+                        InfoTable.put("hint", edit.getText().toString());
+
+                        BackThread2 thread = new BackThread2(mHandler, mPath, InfoTable);
+                        thread.setDaemon(true);
+                        thread.start();
+
+                        Intent intent = new Intent(getBaseContext(), Test.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+                });
+                 /**
+                OkHintBtn = (ImageButton)findViewById(R.id.OkHintBtn);
+                NewPhoto = (ImageView) findViewById(R.id.NewPhoto);
+                NewPhoto.setImageBitmap(BitmapImg);
                 BackThread2 thread = new BackThread2(mHandler, mPath, InfoTable);
                 thread.setDaemon(true);
-                thread.start();
+                thread.start();**/
+
             }
         });
         takePhoto();

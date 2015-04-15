@@ -16,7 +16,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="대전 모드"
+            android:text="몽키 대전"
             android:id="@+id/MonkeyBtn"
             android:layout_gravity="center_horizontal"
             android:textColor="#ffffff"
@@ -30,14 +30,10 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:textAlignment="gravity"/>
-            /**
-            android:focusable="false"
-            android:clickable="false"
-            android:focusableInTouchMode="false"/>**/
         <Button
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="퍼즐 모드"
+            android:text="퍼즐 몽키"
             android:id="@+id/RandomBtn"
             android:layout_gravity="center_horizontal"
             android:textColor="#ffffff"

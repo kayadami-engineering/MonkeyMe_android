@@ -11,6 +11,7 @@ import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -111,6 +112,13 @@ public class Test extends Activity {
         setting.setText(downlist.get(0).get("banana"));
         setting = (TextView)findViewById(R.id.LeafTxt);
         setting.setText(downlist.get(0).get("leaf"));
+        Button ProfileBtn= (Button)findViewById(R.id.ProfileBtn);
+        ProfileBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         final ImageView picture = (ImageView)findViewById(R.id.ProfileView);
 
         Handler imgHandler = new Handler(){
@@ -133,14 +141,6 @@ public class Test extends Activity {
         for (int i = 0; i < downlist.size(); i++) {
             arItem.add(new ListItem(type, downlist.get(i).get("name"), downlist.get(i).get("level"), downlist.get(i).get("round"), downlist.get(i).get("profile"), downlist.get(i).get("g_no"), downlist.get(i).get("isSolved")));
         }
-        /**
-         MyAdapter = new MultiAdapter(this, arItem);
-
-         ListView MyList;
-         MyList=(ListView)findViewById(R.id.list);
-         MyList.setAdapter(MyAdapter);
-         **/
-
     }
 
 
@@ -171,20 +171,6 @@ public class Test extends Activity {
                     break;
             }
         }
-        public void setIntentArr(int position, ArrayList<String> IntentArr){
-            HashMap<String, String> tmp = table.get("myturn").get(position);
-            Log.i("tag", "intent1");
-            Log.i("tag", tmp.get("name"));
-            IntentArr.add(tmp.get("g_no"));
-            IntentArr.add(tmp.get("m_no"));
-            IntentArr.add(tmp.get("name"));
-            IntentArr.add(tmp.get("level"));
-            IntentArr.add(tmp.get("profile"));
-            IntentArr.add(tmp.get("round"));
-            IntentArr.add(tmp.get("keyword"));
-            IntentArr.add(tmp.get("imageUrl"));
-            IntentArr.add(tmp.get("hint"));
-        }
     };
 
 
@@ -192,7 +178,7 @@ public class Test extends Activity {
 }
 
 class BackThread extends Thread{
-    int type;   //1:메인업데이트, 2:게임맞춤, 3:키워드 받아오기
+    int type;   //1:메인업데이트, 2:게임맞춤, 3:키워드 받아오기, 4:몽키대전 친구목록
     Handler mHandler;
     String g_no;
     String m_no;
@@ -271,10 +257,9 @@ class Network {
 
                 StringBuffer buffer = new StringBuffer();
                 if(type == 1){
-                    buffer.append("command=updateMain&memberNumber=3");
-                    String str = "command=updateMain&memberNumber=3";
+                    buffer.append("command=updateMain&memberNumber=4");
                     OutputStream out = new BufferedOutputStream(conn.getOutputStream());
-                    out.write(str.getBytes());
+                    out.write(buffer.toString().getBytes());
                     out.flush();
                     parser(conn.getInputStream(), mHandler);
                     conn.disconnect();
@@ -303,6 +288,23 @@ class Network {
                     Log.i("test", "call");
                     InputStream input = conn.getInputStream();
                     parser2(input, mHandler);
+                    Log.i("test", "call3");
+                    conn.disconnect();
+                } else if(type ==4){
+                    buffer.append("command=friendlist_monkey&memberNumber=").append("4");
+                    OutputStream outStream = new BufferedOutputStream(conn.getOutputStream());
+                    outStream.write(buffer.toString().getBytes());
+                    outStream.flush();
+                    Log.i("test", "call");
+                    /**
+                    BufferedReader rd = null;
+                    rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                    String line = null;
+                    while ((line = rd.readLine()) != null) {
+                        Log.i("Lifeclue", line);
+                    }**/
+                    InputStream input = conn.getInputStream();
+                    parser3(input, mHandler);
                     Log.i("test", "call3");
                     conn.disconnect();
                 }
@@ -346,7 +348,7 @@ class Network {
                 dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
                 dos.writeBytes("Content-Disposition: form-data; name=\"memberNumber\"" + lineEnd + lineEnd + "4");    //내번호
                 dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
-                dos.writeBytes("Content-Disposition: form-data; name=\"targetNumber\"" + lineEnd + lineEnd + "5"); //상대방번호
+                dos.writeBytes("Content-Disposition: form-data; name=\"targetNumber\"" + lineEnd + lineEnd + InfoTable.get("m_no")); //상대방번호
                 Log.i("m_no", InfoTable.get("m_no"));
                 dos.writeBytes(lineEnd+"--"+boundary+"\r\n");//URLEncoder.encode(InfoTable.get("keyword"), "utf-8")
                 dos.writeBytes("Content-Disposition: form-data; name=\"keyword\"" + lineEnd + lineEnd + URLEncoder.encode(InfoTable.get("keyword"), "UTF-8"));
@@ -514,6 +516,55 @@ class Network {
         Message msg = new Message();
         msg.what = 0;
         msg.obj = table;
+        mHandler.sendMessage(msg);
+    }
+
+    public void parser3(InputStream istream, Handler mHandler) {
+        Log.i("test", "parser1");
+
+        ArrayList<HashMap<String, String>> hashArray = new ArrayList<HashMap<String, String>>();
+
+
+        try {
+            Log.i("test", "parser2");
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+
+            Document doc = builder.parse(istream);
+            Element order = doc.getDocumentElement();
+            NodeList infoheads = order.getElementsByTagName("infohead");
+            Log.i("test", "parser3");
+            Node info = infoheads.item(0);
+            NamedNodeMap Attrs = info.getAttributes();
+            Node attr = Attrs.item(1);
+            if(attr.getNodeValue().equals("succeed")){
+                Log.e("tag", "downsucceed!");
+            }
+            if(attr.getNodeValue().equals("error")){
+                Log.e("tag", "downError!");
+            }
+
+
+
+            NodeList friends = order.getElementsByTagName("friendinfo");
+            Node friend;
+
+            for(int i=0; i<friends.getLength(); i++){
+                hashArray.add(new HashMap<String, String>());
+                friend = friends.item(i);
+                Attrs = friend.getAttributes();
+                for(int j=0; j<Attrs.getLength(); j++){
+                    attr = Attrs.item(j);
+                    hashArray.get(i).put(attr.getNodeName(), attr.getNodeValue());
+                }
+            }
+
+        } catch (Exception e) {
+            Log.e("tag", "Error!");
+        }
+        Message msg = new Message();
+        msg.what = 0;
+        msg.obj = hashArray;
         mHandler.sendMessage(msg);
     }
 }

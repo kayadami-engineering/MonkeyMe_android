@@ -222,6 +222,11 @@
                             android:clickable="true"
                             android:id="@+id/ProfileBar"
                             android:background="#F5F6F1">
+                            <Button
+                                android:id="@+id/ProfileBtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#00000000"/>
 
 
                             <!--

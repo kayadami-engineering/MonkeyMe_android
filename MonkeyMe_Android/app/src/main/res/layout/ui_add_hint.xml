@@ -20,6 +20,7 @@
                 android:typeface="sans"
                 android:textIsSelectable="false" />
             <ImageButton
+                android:id="@+id/OkHintBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
