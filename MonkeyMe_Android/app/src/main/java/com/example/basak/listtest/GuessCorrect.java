@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
@@ -15,10 +15,10 @@ public class GuessCorrect extends Activity {
     HashMap<String, String> InfoTable;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ui_correct);
+        setContentView(R.layout.ui_guess_correct2);
         InfoTable = (HashMap<String, String>)getIntent().getSerializableExtra("InfoList");
-        ImageView img = (ImageView)findViewById(R.id.testimg);
-        img.setOnClickListener(new View.OnClickListener() {
+        TextView MyTurnText = (TextView)findViewById(R.id.MyTurnTxt);
+        MyTurnText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), SelectKeyWord.class);

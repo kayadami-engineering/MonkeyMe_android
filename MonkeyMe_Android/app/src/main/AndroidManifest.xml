@@ -27,6 +27,8 @@
         <activity android:name=".GuessCorrect" android:label="GuessCorrect"/>
         <activity android:name=".TakePhoto" android:label="TakePhoto"/>
         <activity android:name=".SelectKeyWord" android:label="SelectKeyWord"/>
+        <activity android:name=".PuzzleMonkey" android:label="PuzzleMonkey"/>
+        <activity android:name=".PuzzleCorrect" android:label="PuzzleCorrect"/>
     </application>
 
 </manifest>

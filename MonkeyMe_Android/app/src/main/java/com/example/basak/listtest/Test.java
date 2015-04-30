@@ -178,9 +178,9 @@ public class Test extends Activity {
 }
 
 class BackThread extends Thread{
-    int type;   //1:메인업데이트, 2:게임맞춤, 3:키워드 받아오기, 4:몽키대전 친구목록
+    int type;   //1:메인업데이트, 2:게임맞춤, 3:키워드 받아오기, 4:몽키대전 친구목록, 5:퍼즐몽키, 6:퍼즐모드 맞춤
     Handler mHandler;
-    String g_no;
+    String g_no;    //g_no or rnd_no(in puzzleMonkey)
     String m_no;
     String b_count;
 
@@ -191,7 +191,8 @@ class BackThread extends Thread{
         this.m_no = null;
         this.b_count = null;
     }
-    BackThread(Handler mHandler, String g_no, String m_no, String b_count){
+
+    BackThread(Handler mHandler, int type, String g_no, String m_no, String b_count){
         this.type = type;
         this.mHandler = mHandler;
         this.g_no = g_no;
@@ -222,8 +223,11 @@ class ImageThread extends Thread{
 
     private void downImage(){
         try{
+            Log.i("log", "test");
             InputStream istream = new URL(imgUrl).openStream();
+            Log.i("log", "test1");
             image = BitmapFactory.decodeStream(istream);
+            Log.i("log", "test2");
             if(image == null){
                 Log.e("Error", "null image!");
             } else{
@@ -307,6 +311,54 @@ class Network {
                     parser3(input, mHandler);
                     Log.i("test", "call3");
                     conn.disconnect();
+                } else if(type==5){ //퍼즐몽키 받아오기
+                    buffer.append("command=randomItem&memberNumber=4");
+                    OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+                    out.write(buffer.toString().getBytes());
+                    out.flush();
+
+                    parser4(conn.getInputStream(), mHandler);
+                    conn.disconnect();
+                    Log.i("dis", "connected");
+                    return "success";
+                } else if(type==6){ //퍼즐몽키 맞춤
+                    buffer.append("command=solveTheRandom&rnd_no=").append(g_no).append("&memberNumber=4");
+                    //buffer.append("command=replyList&g_no=1_1429111200&0&sort=1");
+                    OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+                    out.write(buffer.toString().getBytes());
+                    out.flush();
+                    /*
+                    BufferedReader rd = null;
+
+                    rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                    String line = null;
+                    while ((line = rd.readLine()) != null) {
+                        Log.i("Lifeclue", line);
+                    }*/
+
+                    parser(conn.getInputStream(), mHandler);
+                    conn.disconnect();
+                    Log.i("dis", "connected");
+                    return "success";
+                } else if(type == 7){
+                    //buffer.append("command=replyList&g_no=").append(g_no).append("&0&sort=1");
+                    buffer.append("command=replyList&g_no=1_1429111200&0&sort=1");
+                    OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+                    out.write(buffer.toString().getBytes());
+                    out.flush();
+                    /*
+                    BufferedReader rd = null;
+
+                    rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                    String line = null;
+                    while ((line = rd.readLine()) != null) {
+                        Log.i("Lifeclue", line);
+                    }
+                    */
+                    parser5(conn.getInputStream(), mHandler);
+                    conn.disconnect();
+                    Log.i("dis", "connected");
+                    return "success";
                 }
             }
             return "0";
@@ -553,6 +605,104 @@ class Network {
                 hashArray.add(new HashMap<String, String>());
                 friend = friends.item(i);
                 Attrs = friend.getAttributes();
+                for(int j=0; j<Attrs.getLength(); j++){
+                    attr = Attrs.item(j);
+                    hashArray.get(i).put(attr.getNodeName(), attr.getNodeValue());
+                }
+            }
+
+        } catch (Exception e) {
+            Log.e("tag", "Error!");
+        }
+        Message msg = new Message();
+        msg.what = 0;
+        msg.obj = hashArray;
+        mHandler.sendMessage(msg);
+    }
+
+    public void parser4(InputStream istream, Handler mHandler) {
+        Log.i("test", "parser1");
+
+        ArrayList<HashMap<String, String>> hashArray = new ArrayList<HashMap<String, String>>();
+
+
+        try {
+            Log.i("test", "parser2");
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+
+            Document doc = builder.parse(istream);
+            Element order = doc.getDocumentElement();
+            NodeList infoheads = order.getElementsByTagName("infohead");
+            Log.i("test", "parser3");
+            Node info = infoheads.item(0);
+            NamedNodeMap Attrs = info.getAttributes();
+            Node attr = Attrs.item(1);
+            if(attr.getNodeValue().equals("succeed")){
+                Log.e("tag", "downsucceed!");
+            }
+            if(attr.getNodeValue().equals("error")){
+                Log.e("tag", "downError!");
+            }
+
+
+
+            NodeList randoms = order.getElementsByTagName("randominfo");
+            Node random;
+
+            for(int i=0; i<randoms.getLength(); i++){
+                hashArray.add(new HashMap<String, String>());
+                random = randoms.item(i);
+                Attrs = random.getAttributes();
+                for(int j=0; j<Attrs.getLength(); j++){
+                    attr = Attrs.item(j);
+                    hashArray.get(i).put(attr.getNodeName(), attr.getNodeValue());
+                }
+            }
+
+        } catch (Exception e) {
+            Log.e("tag", "Error!");
+        }
+        Message msg = new Message();
+        msg.what = 0;
+        msg.obj = hashArray;
+        mHandler.sendMessage(msg);
+    }
+
+    public void parser5(InputStream istream, Handler mHandler) {    //댓글리스트
+        Log.i("test", "parser1");
+
+        ArrayList<HashMap<String, String>> hashArray = new ArrayList<HashMap<String, String>>();
+
+
+        try {
+            Log.i("test", "parser2");
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+
+            Document doc = builder.parse(istream);
+            Element order = doc.getDocumentElement();
+            NodeList infoheads = order.getElementsByTagName("infohead");
+            Log.i("test", "parser3");
+            Node info = infoheads.item(0);
+            NamedNodeMap Attrs = info.getAttributes();
+            Node attr = Attrs.item(1);
+            if(attr.getNodeValue().equals("succeed")){
+                Log.e("tag", "downsucceed!");
+            }
+            if(attr.getNodeValue().equals("error")){
+                Log.e("tag", "downError!");
+            }
+
+
+
+            NodeList replyinfos = order.getElementsByTagName("replyinfo");
+            Node replyinfo;
+
+            for(int i=0; i<replyinfos.getLength(); i++){
+                hashArray.add(new HashMap<String, String>());
+                replyinfo = replyinfos.item(i);
+                Attrs = replyinfo.getAttributes();
                 for(int j=0; j<Attrs.getLength(); j++){
                     attr = Attrs.item(j);
                     hashArray.get(i).put(attr.getNodeName(), attr.getNodeValue());

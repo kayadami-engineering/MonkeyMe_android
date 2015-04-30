@@ -99,27 +99,13 @@ class MultiAdapter extends BaseAdapter{
                     picture.setImageBitmap(arSrc.get(position).ProfileImage);
                 }
 
-                //picture.setImageResource(arSrc.get(position).getPicture());
                 break;
 
            case 3 :
 
                arSrc.get(position).setMonkeyBtn(convertView);
                arSrc.get(position).setPuzzleBtn(convertView);
-               /**
-                Log.i("tag", "button1");
-                Button MonkeyBtn = (Button) convertView.findViewById(R.id.MonkeyBtn);
-                Log.i("tag", "button2");**/
-                /**MonkeyBtn.setOnClickListener(new View.OnClickListener() {
 
-                    @Override
-                    public void onClick(View v) {
-                        Log.i("tag", "button3");
-                        Message msg = new Message();
-                        msg.what = 1;
-                        mhandler.sendMessage(msg);
-                    }
-                });**/
 
 
                 break;

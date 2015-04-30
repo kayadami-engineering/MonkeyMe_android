@@ -51,7 +51,7 @@ public class GuessActivity extends Activity{
             public void onClick(View v) {
                 Handler handler = new Handler();
                 if(GuessInput.getText().toString().equals(InfoTable.get("keyword"))){
-                    BackThread test = new BackThread(handler, InfoTable.get("g_no"), InfoTable.get("m_no"), InfoTable.get("b_count"));
+                    BackThread test = new BackThread(handler, 2,InfoTable.get("g_no"), InfoTable.get("m_no"), InfoTable.get("b_count"));
                     Log.i("g_no", InfoTable.get("g_no"));
                     Log.i("m_no", InfoTable.get("m_no"));
                     Log.i("b_count", InfoTable.get("b_count"));

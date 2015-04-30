@@ -50,14 +50,14 @@ class ListItem {
 
     void setPuzzleBtn(View v){
         PuzzleBtn = (Button) v.findViewById(R.id.RandomBtn);
-       /** PuzzleBtn.setOnClickListener(new View.OnClickListener() {
+        PuzzleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), GuessActivity.class);
+                Intent intent = new Intent(v.getContext(), PuzzleMonkey.class);
                 v.getContext().startActivity(intent);
 
             }
-        });**/
+        });
 
     }
 
