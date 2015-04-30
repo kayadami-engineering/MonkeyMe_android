@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Correct2"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/MonkeyBlue"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:background="#ffffff"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="suyong Choi"
+            android:textSize="15dp"/>
+        <ImageView
+            android:id="@+id/ProfileImg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:layout_below="@id/Name"
+            android:background="@drawable/icon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ProfileImg"
+            android:layout_toRightOf="@id/ProfileImg"
+            android:layout_toEndOf="@id/ProfileImg"
+            android:text="님이 얼마나 재밌었나요?"
+            android:textSize="22dp"/>
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ProfileImg"
+            android:layout_toRightOf="@id/ProfileImg"
+            android:layout_toEndOf="@id/ProfileImg"
+            android:layout_marginTop="25dp"
+            android:stepSize="1"
+            android:rating="0"/>
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="첫 댓글을 달아주세요!"
+            android:gravity="center"
+            android:textColor="#3A4249"
+            android:textSize="25dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/reply_border"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dp"
+                >
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/edit_back"
+
+                    android:hint="댓글을 달아주세요!"
+                    />
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="6dp"
+                    android:background="@drawable/send"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/MyTurnTxt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="내 차례로!"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/puzzlemode"/>
+
+
+
+</LinearLayout>

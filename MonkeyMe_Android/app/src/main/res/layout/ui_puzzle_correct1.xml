@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Correct1"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/MonkeyBlue">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="몽키를 맞췄어요!"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_marginTop="60dp"
+        android:textColor="#FEFC97"/>
+    <ImageView
+        android:id="@+id/testimg"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/icon"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="획득한 바나나"
+        android:gravity="center"
+        android:textColor="#3A4249"
+        android:textSize="30dp"/>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#444444"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#FEFC97"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lv.5"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#FEFC97"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:background="#ffffff"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
