@@ -109,13 +109,13 @@ class ReplyAdapter extends BaseAdapter{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if(convertView == null){
-            convertView = mInflater.inflate(R.layout.ui_puzzle_correct2, parent, false);
+            convertView = mInflater.inflate(R.layout.reply_item, parent, false);
         }
         TextView text = (TextView)convertView.findViewById(R.id.Name);
         text.setText(arSrc.get(position).Name);
         Log.i("name", arSrc.get(position).Reply);
-        //TextView text2 = (TextView)convertView.findViewById(R.id.Reply);
-        //text2.setText(arSrc.get(position).Reply);
+        TextView text2 = (TextView)convertView.findViewById(R.id.Reply);
+        text2.setText(arSrc.get(position).Reply);
         text = (TextView)convertView.findViewById(R.id.Date);
         text.setText(arSrc.get(position).Date);
         text = (TextView)convertView.findViewById(R.id.Like);

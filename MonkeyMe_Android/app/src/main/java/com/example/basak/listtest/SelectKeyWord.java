@@ -42,7 +42,7 @@ public class SelectKeyWord extends Activity {
                 InfoTable.remove("b_count");
                 InfoTable.put("keyword", EasyKeyword.getText().toString());
                 InfoTable.put("b_count", "1");
-                Intent intent = new Intent(getBaseContext(), TakePhoto.class);
+                Intent intent = new Intent(getBaseContext(), TakeMovie.class);
                 intent.putExtra("InfoList", InfoTable);
                 startActivity(intent);
                 finish();

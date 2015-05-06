@@ -342,7 +342,7 @@ class Network {
                     return "success";
                 } else if(type == 7){
                     //buffer.append("command=replyList&g_no=").append(g_no).append("&0&sort=1");
-                    buffer.append("command=replyList&g_no=1_1429111200&0&sort=1");
+                    buffer.append("command=topReply&g_no=1_1429111200&3&sort=1");
                     OutputStream out = new BufferedOutputStream(conn.getOutputStream());
                     out.write(buffer.toString().getBytes());
                     out.flush();
@@ -411,7 +411,7 @@ class Network {
                 dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
                 dos.writeBytes("Content-Disposition: form-data; name=\"round\""+lineEnd+lineEnd+"2");
                 dos.writeBytes(lineEnd + "--" + boundary + "\r\n");
-                dos.writeBytes("Content-Disposition: form-data; name=\"image\"; filename=\"image.bmp\"\r\n");
+                dos.writeBytes("Content-Disposition: form-data; name=\"file\"; filename=\"image.jpeg\"\r\n");
                 dos.writeBytes("Content-Type: application/octet-stream\r\n\r\n");
                 FileInputStream fileInputStream = new FileInputStream(mPath);
                 int bytesAvailable = fileInputStream.available();
@@ -444,6 +444,90 @@ class Network {
                     conn.disconnect();
                     Log.i("dis", "connected");
                     return "success";
+            }
+            return "0";
+        } catch(NetworkOnMainThreadException e){
+            return "Error : 메인 스레드 네트워크 작업 에러 - "+ e.getMessage();
+        }catch(Exception e){
+            Log.e("tag", "error");
+            return "Error : " + e.getMessage();
+        }
+    }
+
+    public String downNetwork3(Handler mHandler, int type, String mPath, HashMap<String, String> InfoTable){  //추후에 어플리케이션으로 구현해서 더함수화 하자
+        try{
+            URL url = new URL("http://175.211.100.229/monkeyme/monkeyme_server/RequestHandleServer.php");
+            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+            String lineEnd = "\r\n";
+            String twoHypens = "--";
+            String boundary = "3FFS4PKI7YH9S";
+
+            byte[] image;
+            String stringData1;
+            String stringData2;
+            if(conn != null){
+                conn.setConnectTimeout(10000);
+                conn.setUseCaches(false);
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("content-type", "multipart/form-data;boundary=" + boundary);
+
+
+                DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
+                Log.i("test", "network in");
+                dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
+                //dos.writeBytes("Content-Disposition: form-data; name=\"g_no\";filename=\""+fileName+"\""+lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"command\""+lineEnd+lineEnd+"uploadGameData");
+                dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
+                dos.writeBytes("Content-Disposition: form-data; name=\"g_no\""+lineEnd+lineEnd+InfoTable.get("g_no"));
+                dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
+                dos.writeBytes("Content-Disposition: form-data; name=\"memberNumber\"" + lineEnd + lineEnd + "4");    //내번호
+                dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
+                dos.writeBytes("Content-Disposition: form-data; name=\"targetNumber\"" + lineEnd + lineEnd + InfoTable.get("m_no")); //상대방번호
+                Log.i("m_no", InfoTable.get("m_no"));
+                dos.writeBytes(lineEnd+"--"+boundary+"\r\n");//URLEncoder.encode(InfoTable.get("keyword"), "utf-8")
+                dos.writeBytes("Content-Disposition: form-data; name=\"keyword\"" + lineEnd + lineEnd + URLEncoder.encode(InfoTable.get("keyword"), "UTF-8"));
+                dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
+                dos.writeBytes("Content-Disposition: form-data; name=\"hint\"" + lineEnd + lineEnd + URLEncoder.encode(InfoTable.get("hint"), "UTF-8"));
+                dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
+                dos.writeBytes("Content-Disposition: form-data; name=\"b_count\""+lineEnd+lineEnd+InfoTable.get("b_count"));
+                dos.writeBytes(lineEnd+"--"+boundary+"\r\n");
+                dos.writeBytes("Content-Disposition: form-data; name=\"round\""+lineEnd+lineEnd+"2");
+                dos.writeBytes(lineEnd + "--" + boundary + "\r\n");
+                dos.writeBytes("Content-Disposition: form-data; name=\"file\"; filename=\"movie.mp4\"\r\n");
+                dos.writeBytes("Content-Type: application/octet-stream\r\n\r\n");
+                FileInputStream fileInputStream = new FileInputStream(mPath);
+                int bytesAvailable = fileInputStream.available();
+                int maxBufferSize = 1000;
+                int bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                byte[] buffer = new byte[bufferSize];
+
+                int bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+                while (bytesRead > 0)
+                {
+                    // Upload file part(s)
+                    //DataOutputStream dataWrite = new DataOutputStream(conn.getOutputStream());
+                    dos.write(buffer, 0, bufferSize);
+                    bytesAvailable = fileInputStream.available();
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+                }
+                fileInputStream.close();
+                dos.writeBytes("\r\n--" + boundary + "--\r\n");
+                dos.flush();
+
+                BufferedReader rd = null;
+
+                rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                String line = null;
+                while ((line = rd.readLine()) != null) {
+                    Log.i("Lifeclue", line);
+                }
+                //parser(conn.getInputStream(), mHandler);
+                conn.disconnect();
+                Log.i("dis", "connected");
+                return "success";
             }
             return "0";
         } catch(NetworkOnMainThreadException e){

@@ -4,27 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="8dp">
+
         <TextView
             android:id="@+id/Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
             android:textSize="18dp"
             android:text="name"/>
-        <TextView
-            android:id="@+id/Reply"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="15dp"
-            android:textSize="18dp"
-            android:text="이거 보니 비빔밥 먹고 싶당"/>
-        </LinearLayout>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:id="@+id/Reply"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:text="이거 보니 비빔밥 먹고 싶당"/>
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/comment_action"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:scaleType="center"/>
+            </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,12 +67,7 @@
             android:textSize="15dp"
             android:textColor="#FBCF39"
             android:text="777"/>
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/comment_action"
-            android:scaleType="center"/>
+
         </LinearLayout>
 
 </LinearLayout>

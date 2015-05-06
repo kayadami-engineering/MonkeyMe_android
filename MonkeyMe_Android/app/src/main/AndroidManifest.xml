@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <!--<uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus"/>-->
     <application
@@ -29,6 +30,7 @@
         <activity android:name=".SelectKeyWord" android:label="SelectKeyWord"/>
         <activity android:name=".PuzzleMonkey" android:label="PuzzleMonkey"/>
         <activity android:name=".PuzzleCorrect" android:label="PuzzleCorrect"/>
+        <activity android:name=".TakeMovie" android:label="TakeMovie"/>
     </application>
 
 </manifest>

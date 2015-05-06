@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class GuessCorrect extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_guess_correct2);
         InfoTable = (HashMap<String, String>)getIntent().getSerializableExtra("InfoList");
+
         TextView MyTurnText = (TextView)findViewById(R.id.MyTurnTxt);
         MyTurnText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,5 +29,14 @@ public class GuessCorrect extends Activity {
                 finish();
             }
         });
+
+        ImageButton SendReply = (ImageButton)findViewById(R.id.SendReply);
+        SendReply.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
+
 }

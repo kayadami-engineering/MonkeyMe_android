@@ -3,7 +3,6 @@ package com.example.basak.listtest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,15 +17,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.HashMap;
 
 /**
  * Created by basak on 2015-04-09.
  */
-public class TakePhoto extends Activity {
+public class TakeMovie extends Activity {
     ImageView NewPhoto;
     String mPath;
     TextView Retake, UsePhoto;
@@ -43,7 +39,7 @@ public class TakePhoto extends Activity {
         NewPhoto = (ImageView) findViewById(R.id.NewPhoto);
 
         mPath = Environment.getExternalStorageDirectory().getAbsolutePath() +
-                "/attachimage.jpeg";
+                "/attachmovie.mp4";
         Retake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +61,7 @@ public class TakePhoto extends Activity {
                         InfoTable.remove("hint");
                         InfoTable.put("hint", edit.getText().toString());
 
-                        BackThread2 thread = new BackThread2(mHandler, mPath, InfoTable);
+                        BackThread3 thread = new BackThread3(mHandler, mPath, InfoTable);
                         thread.setDaemon(true);
                         thread.start();
 
@@ -90,51 +86,18 @@ public class TakePhoto extends Activity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize = 10;
-            BitmapImg = BitmapFactory.decodeFile(mPath, options);
-            SaveBitmapToFileCache(BitmapImg, mPath);
-            NewPhoto.setImageBitmap(BitmapImg);
-
-
+            //BitmapFactory.Options options = new BitmapFactory.Options();
+            //options.inSampleSize = 6;
+            //BitmapImg = BitmapFactory.decodeFile(mPath, options);
+            //NewPhoto.setImageBitmap(BitmapImg);
         }
 
 
-    }
-
-    // Bitmap to File
-    public  void SaveBitmapToFileCache(Bitmap bitmap, String mPath) {
-
-        //File file = new File(strFilePath);
-        /**
-        // If no folders
-        if (!file.exists()) {
-            file.mkdirs();
-            // Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-        }
-         **/
-
-        File fileCacheItem = new File(mPath);
-        OutputStream out = null;
-
-        try {
-            fileCacheItem.createNewFile();
-            out = new FileOutputStream(fileCacheItem);
-
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public void takePhoto() {
-        intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 7);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(mPath)));
         startActivityForResult(intent, 1);
     }
@@ -150,4 +113,24 @@ public class TakePhoto extends Activity {
 
         ;
     };
+}
+
+class BackThread3 extends Thread{
+    Handler mHandler;
+    String g_no;
+    String m_no;
+    String b_count;
+    String mPath;
+    HashMap<String, String> InfoTable;
+
+    BackThread3(Handler mHandler,String mPath, HashMap<String, String> InfoTable){
+        this.mHandler = mHandler;
+        this.mPath = mPath;
+        this.InfoTable = InfoTable;
+    }
+
+    public void run(){
+        Network net = new Network();
+        net.downNetwork3(mHandler, 2, mPath, InfoTable);
+    }
 }
