@@ -1,0 +1,320 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#07B3C5"/>
+    //title
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/TitleBar"
+        android:background="@color/MonkeyBlue"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:src="@drawable/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/BackBtn"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true" />
+
+        <TextView
+            android:text="프로필"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:textSize="22dp"
+            android:textColor="#ffffff"
+            android:typeface="sans"
+            android:textIsSelectable="false" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/Friends"
+            android:src="@drawable/share"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp" />
+
+    </RelativeLayout>
+
+    <it.neokree.materialtabs.MaterialTabHost
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:primaryColor="#F5F6F1"
+        app:accentColor="#07B3C5"
+        app:iconColor="#7B827E"
+        app:hasIcons="true"
+        android:layout_below="@+id/ProfileBar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabHost" />
+
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="130dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/ProfileBar"
+        android:background="#F5F6F1"
+        android:layout_below="@+id/ItemBar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <com.pkmmte.view.CircularImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ProfileView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/levc"
+            app:border="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="송혜교"
+            android:id="@+id/EditTxt"
+            android:typeface="sans"
+            android:textColor="@color/BackgroundGrey"
+            android:textSize="16dp"
+            android:layout_below="@+id/ProfileView"
+            android:layout_alignLeft="@+id/ProfileView"
+            android:layout_alignStart="@+id/ProfileView" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:id="@+id/imageView6"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#30000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="\@hyekyo.song"
+            android:id="@+id/IDTxt"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:layout_below="@+id/EditTxt"
+            android:layout_alignLeft="@+id/EditTxt"
+            android:typeface="sans"
+            android:textColor="@color/LightGrey"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/MonkeyFriends"
+            android:layout_toLeftOf="@+id/Photo"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="13"
+                android:id="@+id/MonkeyFriendsTxt"
+                android:layout_gravity="center_horizontal"
+                android:typeface="sans"
+                android:textColor="@color/BackgroundGrey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Monkey Friends"
+                android:id="@+id/MF"
+                android:textSize="12dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/LightGrey" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/Photo"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5"
+                android:id="@+id/PhotoTxt"
+                android:layout_gravity="center_horizontal"
+                android:typeface="sans"
+                android:textColor="@color/BackgroundGrey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Photo"
+                android:id="@+id/P"
+                android:textSize="12dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/LightGrey" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="프로필 수정하기"
+            android:id="@+id/ProfileEditBtn"
+            android:layout_alignParentBottom="false"
+            android:layout_alignLeft="@+id/MonkeyFriends"
+            android:layout_alignRight="@+id/Photo"
+            android:layout_below="@+id/MonkeyFriends"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/profedit"
+            android:textSize="16dp"
+            android:typeface="sans"
+            android:textColor="#ffffff" />
+
+    </RelativeLayout>
+
+    //item bar
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0"
+        android:id="@+id/ItemBar"
+        android:background="@color/LightGrey"
+        android:layout_below="@+id/TitleBar">
+        //에너지
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/EnergyView"
+                android:layout_centerVertical="true"
+                android:src="@drawable/energy"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="energy"
+                android:id="@+id/EnergyTxt"
+                android:layout_centerVertical="true"
+                android:textColor="#feff86"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:typeface="sans"
+                android:textSize="16dp" />
+        </LinearLayout>
+        //바나나
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/BananaView"
+                android:layout_centerVertical="true"
+                android:src="@drawable/banana"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="banana"
+                android:id="@+id/BananaTxt"
+                android:layout_centerVertical="true"
+                android:textColor="#feff86"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:typeface="sans"
+                android:textSize="16dp" />
+        </LinearLayout>
+        //나뭇잎
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/LeafView"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mleaf"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="leaf"
+                android:id="@+id/LeafTxt"
+                android:layout_centerVertical="true"
+                android:textColor="#feff86"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:typeface="sans"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

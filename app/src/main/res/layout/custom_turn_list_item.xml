@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+
+    android:background="#ffffff"
+    android:descendantFocusability="blocksDescendants"
+    >
+    <!--
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/Pic"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/icon"
+        android:scaleType="centerCrop" />
+        -->
+    <com.pkmmte.view.CircularImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/Pic"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/levc"
+        app:border="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="User Name"
+        android:id="@+id/FriendName"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentTop="false"
+        android:typeface="sans"
+        android:layout_toRightOf="@+id/Pic"
+        android:layout_alignTop="@+id/Pic"
+        android:textColor="@color/BackgroundGrey"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Round 1"
+        android:id="@+id/Round"
+        android:typeface="sans"
+        android:layout_toRightOf="@+id/Pic"
+        android:layout_below="@+id/FriendName"
+        android:textColor="@color/LightGrey"
+        android:textSize="12dp"
+        android:layout_marginTop="1dp" />
+
+    <Button
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="1"
+        android:id="@+id/Level"
+        android:background="@drawable/levc"
+        android:layout_alignBottom="@+id/Pic"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:typeface="sans"
+        android:textColor="#ffffff"
+        android:textSize="8dp"
+        android:layout_alignRight="@+id/Pic"
+        android:layout_marginBottom="5dp" />
+
+</RelativeLayout>
