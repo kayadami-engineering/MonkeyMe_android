@@ -29,6 +29,7 @@
         <activity android:name=".PuzzleMonkey" android:label="PuzzleMonkey"/>
         <activity android:name=".PuzzleCorrect" android:label="PuzzleCorrect"/>
         <activity android:name=".TakeMovie" android:label="TakeMovie"/>
+        <activity android:name=".MyProfile" android:label="MyProfile"/>
 
     </application>
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F6F1">
+    android:background="#F5F6F1"
+    tools:context=".MyProfile">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -49,51 +51,46 @@
         android:layout_height="50dp"
         android:background="#00000000"
         >
-        <RelativeLayout
-            android:id="@+id/Energy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:layout_centerVertical="true">
-            <ImageView
-                android:layout_width="136dp"
-                android:layout_height="45dp"
-                android:src="@drawable/home_energy"
-                android:scaleType="fitCenter"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="    FULL  5/5"
-                android:layout_centerInParent="true"/>
-            </RelativeLayout>
-        <TextView
-            android:id="@+id/Banana"
-            android:layout_width="125dp"
-            android:layout_height="40dp"
-            android:layout_toRightOf="@id/Energy"
-            android:layout_marginLeft="8dp"
-            android:layout_centerVertical="true"
-            android:background="@drawable/home_banana"
-            android:gravity="center"
-            android:text="3397"
-            android:paddingLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="#FFC900"
-            />
-        <TextView
-            android:id="@+id/Inbox"
-            android:layout_width="96dp"
-            android:layout_height="35dp"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/home_inbox"
-            android:text="2"
-            android:gravity="center"
-            android:paddingLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="#FFC900"/>
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="3"
+                android:background="@drawable/home_energy"
+                android:gravity="center"
+                android:text="    FULL  5/5"/>
+            <TextView
+                android:id="@+id/Banana"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/home_banana"
+                android:gravity="center"
+                android:text="3397"
+                android:paddingLeft="20dp"
+                android:textSize="20dp"
+                android:textColor="#FFC900"/>
+            <TextView
+                android:id="@+id/Inbox"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="2"
+                android:background="@drawable/home_inbox"
+                android:text="2"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:textSize="20dp"
+                android:textColor="#FFC900"/>
+        </LinearLayout>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -103,18 +100,21 @@
     
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="130dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
-        <ImageView
+
+        <com.pkmmte.view.CircularImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ProfileImg"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/icon"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginRight="10dp"
+            android:src="@drawable/icon"
+            app:border="false"/>
 
         <LinearLayout
             android:id="@+id/LayoutName"
@@ -157,7 +157,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:orientation="vertical"
             android:id="@+id/LayoutFriend"
             android:layout_alignParentTop="true"
@@ -179,9 +179,8 @@
             </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:orientation="vertical"
-            android:id="@+id/LayoutPhoto"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:gravity="center"
@@ -209,10 +208,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp" >
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1">
+            <ImageButton
+                android:id="@+id/BtnPhotog"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:src="@drawable/photog"
+                android:scaleType="fitCenter"/>
+        <RelativeLayout
+            android:id="@+id/BtnPhotob"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+
+            >
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
@@ -226,41 +240,179 @@
                 android:background="@color/MonkeyBlue"
                 android:layout_alignParentBottom="true"/>
             </RelativeLayout>
-        <RelativeLayout
+        </FrameLayout>
+
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1">
             <ImageButton
+                android:id="@+id/BtnGameg"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:background="#00000000"
                 android:scaleType="fitCenter"
                 android:src="@drawable/gameg"
+                android:layout_gravity="center"/>
+        <RelativeLayout
+            android:id="@+id/BtnGameb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gameb"
                 android:layout_centerInParent="true"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@color/MonkeyBlue"
                 android:layout_alignParentBottom="true"
-                android:visibility="invisible"/>
+                />
             </RelativeLayout>
-        <RelativeLayout
+        </FrameLayout>
+
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1">
             <ImageButton
+                android:id="@+id/BtnAchieveg"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:background="#00000000"
                 android:scaleType="fitCenter"
                 android:src="@drawable/achieveg"
+                android:layout_gravity="center"/>
+        <RelativeLayout
+            android:id="@+id/BtnAchieveb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/achieveb"
                 android:layout_centerInParent="true"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@color/MonkeyBlue"
-                android:layout_alignParentBottom="true"
-                android:visibility="invisible"/>
+                android:layout_alignParentBottom="true"/>
             </RelativeLayout>
+        </FrameLayout>
         </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <GridView
+            android:id="@+id/LayoutPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:numColumns="3"
+            android:columnWidth="70dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center"/>
+        <LinearLayout
+            android:id="@+id/LayoutGame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#3A4249"
+            android:orientation="vertical"
+            android:visibility="visible">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginTop="10dp"
+                android:background="#F5F6F1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@color/MonkeyBlue"
+                    android:gravity="center"
+                    android:text="Level4"
+                    android:textSize="16dp"
+                    android:typeface="sans"
+                    android:textColor="#ffffff"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:text="Earn 58 exp to reach the next level!"
+                    android:textSize="16dp"
+                    android:typeface="sans"
+                    android:textColor="#828884"/>
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/exp_border"
+                    android:layout_marginTop="7dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:typeface="sans"
+                    android:textColor="#FBD245"
+                    android:text="0%"/>
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginTop="10dp"
+                android:background="#F5F6F1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#95DEB3"
+                    android:gravity="center"
+                    android:text="Today's Quest"
+                    android:textSize="16dp"
+                    android:typeface="sans"
+                    android:textColor="#ffffff"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Crack Random Monkey Easy Mode - Stage 5"
+                    android:textSize="16dp"
+                    android:typeface="sans"
+                    android:textColor="#828884"/>
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/banana"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="x5"
+                        android:textSize="14dp"
+                        android:gravity="bottom"
+                        android:textColor="#FBD245"/>
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+        <TextView
+            android:id="@+id/LayoutAchieve"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="achievement"
+            android:visibility="invisible"/>
+        </FrameLayout>
 </LinearLayout>

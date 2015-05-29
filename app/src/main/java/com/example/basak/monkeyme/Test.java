@@ -48,9 +48,6 @@ public class Test extends Activity {
     HashMap<String, ArrayList<HashMap<String, String>>> table;
     Intent intent;
 
-
-
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_home);
@@ -71,33 +68,22 @@ public class Test extends Activity {
     Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
-                Log.i("tag", "getMSG!");
 
                 table = (HashMap<String, ArrayList<HashMap<String, String>>>) msg.obj;
                 setProfile(table.get("state"));
                 if(table.get("myturn").size() !=0){
-                Log.i("tag", "table ok!");
-                setList(table.get("myturn"), -1);
-                Log.i("tag", "test1!");}
+                setList(table.get("myturn"), -1);}
 
                 arItem.add(new ListItem(2, "친구턴"));
 
                 if(table.get("friendsturn").size() != 0) {
 
-                    Log.i("tag", "test2!");
                     setList(table.get("friendsturn"), 0);
                 }
                 MyList = (ListView) findViewById(R.id.HomeList);
                 MyList.setAdapter(MyAdapter);
                 MyList.setOnItemClickListener(mItemClickListener);
             }
-           /** else if(msg.what == 1){
-                Intent intent = new Intent(getBaseContext(), SelectFriendActivity.class);
-                startActivity(intent);
-                finish();
-            }**/
-
-
         }
     };
 
@@ -116,7 +102,10 @@ public class Test extends Activity {
         ProfileBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                intent = new Intent(getBaseContext(), MyProfile.class);
+                intent.putExtra("InfoList", table.get("state"));
+                startActivity(intent);
+                //finish();
             }
         });
         final ImageView picture = (ImageView)findViewById(R.id.ProfileView);
@@ -163,7 +152,7 @@ public class Test extends Activity {
                         intent = new Intent(getBaseContext(), SelectKeyWord.class);
                         intent.putExtra("InfoList", table.get("myturn").get(position-2));
                         startActivity(intent);
-                        finish();
+                        //finish();
                     }
                     break;
                 case 0:
@@ -172,9 +161,6 @@ public class Test extends Activity {
             }
         }
     };
-
-
-
 }
 
 class BackThread extends Thread{
