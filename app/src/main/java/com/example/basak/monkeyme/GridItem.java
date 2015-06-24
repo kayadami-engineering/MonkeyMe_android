@@ -8,6 +8,10 @@ import android.graphics.Bitmap;
 public class GridItem {
     String Name;
     String Picture;
+    String Keyword;
+    String Hint;
+    String Date;
+    String g_no;
     Bitmap ProfileImage;
 
 
@@ -16,5 +20,12 @@ public class GridItem {
         this.Picture = Picture;
         this.Name = Name;
         this.ProfileImage = null;
+    }
+    GridItem(String g_no, String Picture, String Keyword, String Hint, String Date){
+        this.Picture = Picture;
+        this.g_no = g_no;
+        this.Keyword = Keyword;
+        this.Hint = Hint;
+        this.Date = Date;
     }
 }

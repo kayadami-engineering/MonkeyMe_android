@@ -57,8 +57,11 @@ public class Test extends Activity {
         arItem.add(new ListItem(1, "내 턴"));
         MyAdapter = new MultiAdapter(this, arItem, mHandler);
 
+        //BackThread regId = new BackThread(10,mHandler);
         BackThread thread = new BackThread(1, mHandler);
         thread.setDaemon(true);
+       // regId.setDaemon(true);
+        //regId.start();
         thread.start();
 
 
@@ -209,11 +212,8 @@ class ImageThread extends Thread{
 
     private void downImage(){
         try{
-            Log.i("log", "test");
             InputStream istream = new URL(imgUrl).openStream();
-            Log.i("log", "test1");
             image = BitmapFactory.decodeStream(istream);
-            Log.i("log", "test2");
             if(image == null){
                 Log.e("Error", "null image!");
             } else{
@@ -341,7 +341,7 @@ class Network {
                         Log.i("Lifeclue", line);
                     }
                     */
-                    parser5(conn.getInputStream(), mHandler);
+                    parser5(conn.getInputStream(), mHandler, "replyinfo");
                     conn.disconnect();
                     Log.i("dis", "connected");
                     return "success";
@@ -360,7 +360,44 @@ class Network {
                         Log.i("Lifeclue", line);
                     }
                     */
-                    parser5(conn.getInputStream(), mHandler);
+                    parser5(conn.getInputStream(), mHandler, "replyinfo");
+                    conn.disconnect();
+                    Log.i("dis", "connected");
+                    return "success";
+                } else if(type == 9){
+                    buffer.append("command=pastList&memberNumber=4");
+                    OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+                    out.write(buffer.toString().getBytes());
+                    out.flush();
+
+                    /**
+                    BufferedReader rd = null;
+
+                    rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                    String line = null;
+                    while ((line = rd.readLine()) != null) {
+                        Log.i("Lifeclue", line);
+                    }
+                    **/
+                    parser5(conn.getInputStream(), mHandler, "item");
+                    conn.disconnect();
+                    Log.i("dis", "connected");
+                    return "success";
+                } else if(type == 10){  //register gcm device
+                    buffer.append("command=registerDev&memberNumber=4&devicetoken=APA91bHIOXiN139EwgwcHzOQhI0mXxC5DmX4Jdk-B--AWAnUaXknPnwDWEFdG-6NFpRonrF9qHzc6QU7T0GFpxF19uUTn8TltOCCbc3ytxMDJLBCyQU7Iwi6zifcIUqUzcYEkW-u0BCGG1LbzJyL3lbf8Bui4_JBxw&osType=1");
+                    OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+                    out.write(buffer.toString().getBytes());
+                    out.flush();
+
+                    Log.i("test", "regid network");
+                    BufferedReader rd = null;
+
+                    rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                    String line = null;
+                    while ((line = rd.readLine()) != null) {
+                        Log.i("Lifeclue", line);
+                    }
+                    //parser5(conn.getInputStream(), mHandler);
                     conn.disconnect();
                     Log.i("dis", "connected");
                     return "success";
@@ -758,21 +795,19 @@ class Network {
         mHandler.sendMessage(msg);
     }
 
-    public void parser5(InputStream istream, Handler mHandler) {    //댓글리스트
-        Log.i("test", "parser1");
+    public void parser5(InputStream istream, Handler mHandler, String parStr) {    //댓글리스트
+        Log.i("test", "parser5");
 
         ArrayList<HashMap<String, String>> hashArray = new ArrayList<HashMap<String, String>>();
 
 
         try {
-            Log.i("test", "parser2");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
             Document doc = builder.parse(istream);
             Element order = doc.getDocumentElement();
             NodeList infoheads = order.getElementsByTagName("infohead");
-            Log.i("test", "parser3");
             Node info = infoheads.item(0);
             NamedNodeMap Attrs = info.getAttributes();
             Node attr = Attrs.item(1);
@@ -785,7 +820,7 @@ class Network {
 
 
 
-            NodeList replyinfos = order.getElementsByTagName("replyinfo");
+            NodeList replyinfos = order.getElementsByTagName(parStr);
             Node replyinfo;
 
             for(int i=0; i<replyinfos.getLength(); i++){
