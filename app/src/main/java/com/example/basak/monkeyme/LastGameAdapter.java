@@ -1,7 +1,10 @@
 package com.example.basak.monkeyme;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,14 +52,15 @@ public class LastGameAdapter extends BaseAdapter{
 
         final ImageView ImgLastGame = (ImageView) convertView.findViewById(R.id.ImgLastGame);
         ImgLastGame.setImageResource(R.drawable.icon);
-        /**
-        if(arSrc.get(position).ProfileImage == null) {
+
+        if((arSrc.get(position).ProfileImage == null) && arSrc.get(position).Picture.contains("jpeg")) {
             Handler imgHandler = new Handler() {
                 public void handleMessage(Message msg) {
                     if (msg.what == 0) {
                         Log.i("tag", "getIMG!");
                         arSrc.get(pos).ProfileImage = (Bitmap)msg.obj; //caching
                         ImgLastGame.setImageBitmap((Bitmap) msg.obj);
+
                     }
                 }
             };
@@ -64,10 +68,10 @@ public class LastGameAdapter extends BaseAdapter{
             ImageThread imgThread = new ImageThread(arSrc.get(position).Picture, imgHandler, 0);
             imgThread.setDaemon(true);
             imgThread.start();
-        } else{
+        } else if(arSrc.get(position).Picture.contains("jpeg")){
             ImgLastGame.setImageBitmap(arSrc.get(position).ProfileImage);
         }
-         **/
+
 
         return convertView;
     }

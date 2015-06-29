@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.NetworkOnMainThreadException;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -47,6 +50,9 @@ public class Test extends Activity {
     MultiAdapter MyAdapter;
     HashMap<String, ArrayList<HashMap<String, String>>> table;
     Intent intent;
+    private DrawerLayout drawerLayout;
+    private View MenuTab;
+    private View FriendTab;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,16 +63,79 @@ public class Test extends Activity {
         arItem.add(new ListItem(1, "내 턴"));
         MyAdapter = new MultiAdapter(this, arItem, mHandler);
 
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        MenuTab = (View)findViewById(R.id.LeftTab);
+        FriendTab = (View)findViewById(R.id.RightTab);
+
+        ImageButton MenuBtn = (ImageButton)findViewById(R.id.Menu);
+        MenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(MenuTab);
+            }
+        });
+
+        ImageButton FriendTabBtn = (ImageButton)findViewById(R.id.Friends);
+        FriendTabBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(FriendTab);
+            }
+        });
+
+
+        drawerLayout.setDrawerListener(myDrawerListener);
+        MenuTab.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+                return true;
+            }
+        });
+        FriendTab.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
         //BackThread regId = new BackThread(10,mHandler);
         BackThread thread = new BackThread(1, mHandler);
         thread.setDaemon(true);
        // regId.setDaemon(true);
         //regId.start();
         thread.start();
-
-
-
     }
+
+    DrawerLayout.DrawerListener myDrawerListener = new DrawerLayout.DrawerListener() {
+
+        public void onDrawerClosed(View drawerView) {
+        }
+
+        public void onDrawerOpened(View drawerView) {
+        }
+
+        public void onDrawerSlide(View drawerView, float slideOffset) {
+        }
+
+        public void onDrawerStateChanged(int newState) {
+            String state;
+            switch (newState) {
+                case DrawerLayout.STATE_IDLE:
+                    state = "STATE_IDLE";
+                    break;
+                case DrawerLayout.STATE_DRAGGING:
+                    state = "STATE_DRAGGING";
+                    break;
+                case DrawerLayout.STATE_SETTLING:
+                    state = "STATE_SETTLING";
+                    break;
+                default:
+                    state = "unknown!";
+            }
+
+        }
+    };
 
     Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -223,6 +292,7 @@ class ImageThread extends Thread{
                 msg.obj = image;
                 imgHandler.sendMessage(msg);
             }
+
             istream.close();
         } catch(Exception e){
             Log.e("error", "Image Error!");

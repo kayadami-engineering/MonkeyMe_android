@@ -1,53 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:id="@+id/rightMenuPanel"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:background="#ffffffff" >
-        <!--
-        <include
-            android:id="@+id/ic_rightslidemenu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            layout="@layout/rightslidemenu" />
-        -->
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/leftMenuPanel"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ff393c46"
-        android:gravity="left"
-        android:orientation="vertical"
-        android:textColor="#ff000000" >
-
-        <!-- include -->
-        <!--
-        <include
-            android:id="@+id/ic_leftslidemenu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            layout="@layout/leftslidemenu" />
-            -->
-    </LinearLayout>
-
-    <!-- slide layout -->
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <LinearLayout
         android:id="@+id/slidingPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffffff"
-        android:gravity="left"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        tools:context=".Test">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -78,11 +42,13 @@
                             android:id="@+id/TitleBar"
                             android:background="@color/MonkeyBlue">
 
-                            <ImageView
+                            <ImageButton
                                 android:layout_width="30dp"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/Menu"
                                 android:src="@drawable/menu"
+                                android:scaleType="fitCenter"
+                                android:background="#00000000"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="10dp"
@@ -100,11 +66,13 @@
                                 android:textColor="#ffffff"
                                 android:typeface="sans"
                                 android:textIsSelectable="false" />
-                            <ImageView
+                            <ImageButton
                                 android:layout_width="30dp"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/Friends"
                                 android:src="@drawable/friendslist"
+                                android:scaleType="fitCenter"
+                                android:background="#00000000"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginEnd="10dp"
@@ -285,36 +253,211 @@
                             android:layout_alignParentStart="true"
                             android:background="#30000000" />
 
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="fill_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:id="@+id/HomeContents"
-                            >
+
 
 
 
                             <ListView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
                                 android:id="@+id/HomeList"
                                 android:fastScrollEnabled="false"
                                 android:clickable="true"
                                 android:descendantFocusability="blocksDescendants"/>
-
-                        </LinearLayout>
-
-
-
                     </LinearLayout>
                 </FrameLayout>
-
             </LinearLayout>
-
-
-
         </FrameLayout>
     </LinearLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/LeftTab"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#008F9E"
+        android:orientation="vertical"
+        android:layout_gravity="start"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/inbox"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FEFF85"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"
+                android:text="Inbox"/>
+            </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7FC6CE"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ranking"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FEFF85"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"
+                android:text="Rankings"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7FC6CE"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/achieve"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FEFF85"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"
+                android:text="Achievements"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7FC6CE"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/word"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FEFF85"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"
+                android:text="Add your monkey"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7FC6CE"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/shop"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FEFF85"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"
+                android:text="Shop"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7FC6CE"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/settings"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FEFF85"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"
+                android:text="Settings"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7FC6CE"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/help"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FEFF85"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"
+                android:text="Help"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7FC6CE"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/RightTab"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="#3A4249"
+        android:orientation="vertical"
+        android:layout_gravity="end">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="페이스북 친구"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+</android.support.v4.widget.DrawerLayout>
