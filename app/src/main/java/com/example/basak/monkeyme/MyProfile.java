@@ -1,6 +1,7 @@
 package com.example.basak.monkeyme;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -37,6 +38,15 @@ public class MyProfile extends Activity {
         findViewById(R.id.BtnPhotog).setOnClickListener(mClickListener);
         findViewById(R.id.BtnGameg).setOnClickListener(mClickListener);
         findViewById(R.id.BtnAchieveg).setOnClickListener(mClickListener);
+
+        findViewById(R.id.EditProfile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), EditProfile.class);;
+                startActivity(intent);
+                finish();
+            }
+        });
 
         MyAdapter = new LastGameAdapter(this, arItem, mHandler);
         BackThread thread = new BackThread(9, mHandler);
@@ -96,10 +106,12 @@ public class MyProfile extends Activity {
         }
     }
 
+
     AdapterView.OnItemClickListener mItemClickListener = new AdapterView.OnItemClickListener() {
         @SuppressWarnings("unchecked")
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             Toast.makeText(getApplicationContext(), arItem.get(position).Keyword, Toast.LENGTH_SHORT).show();
+            Log.i("clicked", arItem.get(position).Keyword);
 
         }
     };

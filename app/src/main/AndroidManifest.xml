@@ -30,6 +30,7 @@
         <activity android:name=".PuzzleCorrect" android:label="PuzzleCorrect"/>
         <activity android:name=".TakeMovie" android:label="TakeMovie"/>
         <activity android:name=".MyProfile" android:label="MyProfile"/>
+        <activity android:name=".EditProfile" android:label="EditProfile"/>
 
     </application>
 
