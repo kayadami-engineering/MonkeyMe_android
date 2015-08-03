@@ -356,13 +356,13 @@ class Network {
                     outStream.write(buffer.toString().getBytes());
                     outStream.flush();
                     Log.i("test", "call");
-                    /**
+
                     BufferedReader rd = null;
                     rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
                     String line = null;
                     while ((line = rd.readLine()) != null) {
                         Log.i("Lifeclue", line);
-                    }**/
+                    }
                     InputStream input = conn.getInputStream();
                     parser3(input, mHandler);
                     Log.i("test", "call3");

@@ -9,9 +9,9 @@ import org.xml.sax.helpers.DefaultHandler;
 public class SaxParser {
 }
 
-class SaxHandler extends DefaultHandler{
+class SaxHandler extends DefaultHandler {
     public void startDocument(){}
-    public void enddocument(){}
+    public void endDocument(){}
 
     public void startElement(String uri, String localName, String qName, Attributes attrs){
 
